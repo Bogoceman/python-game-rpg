@@ -1,0 +1,1 @@
+INTRO_SCRIPT = "Bienvenue dans Le Donjon Infernal. /nVous allez devoir vaincre des hordes d'ennemies à travers ce Donjon infinie"
