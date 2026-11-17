@@ -1,7 +1,8 @@
+import pymongo
 import sys
 from constants import INTRO_SCRIPT, GAME_CHOICE
-from variable import score, player_name, choice_user
-from db_init import collectionPlayers
+from variable import score, player_name, choice_user, top_5_score
+from db_init import collectionPlayers, collectionCharacters
 
 
 # selection de si on veut jouer, voir les scores, ou quitter le jeu
@@ -41,16 +42,22 @@ def intro():
 
 # option pour afficher le leaderboard
 def leaderboard() :
-    
+    top_5_score = collectionPlayers.find().sort("score", pymongo.DESCENDING).limit(5)
+    for players in top_5_score :
+        print(f"{players['name']} : {players['scores']} : {players['personnages']}") # dans la db la team s'appelle "personnages" a corriger 
 
 # option pour quitter le jeu
 def quit_game() :
     print(":'(")
     sys.exit()
-    
-
-choice()            
 
 # sélection les personnages a choisir 
+def team_selection() :
     # demander a l'utilisateur quel personnage il veut choisir (3 personnages)
+    print("Choisissez vos compagnons")
+    for ally in collectionCharacters.find() :
+        print(f"{ally} {ally['name']} : Attaque {ally['ATK']} | Défense {ally['DEF']} | Point de Vie {ally['PV']}")
+    
     # enregistrer la sélection des personnages dans la base de données du joueur
+    # enregistrer la team dans la bdd
+team_selection()

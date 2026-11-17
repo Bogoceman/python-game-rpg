@@ -8,6 +8,6 @@ collectionMonsters = db["monsters"]
 collectionCharacters = db["characters"]
 collectionPlayers = db["players"]
 
-
-collectionCharacters.insert_many([{"name": name, **stats} for name, stats in characters.items()])
-collectionMonsters.insert_many([{"name": name, **stats} for name, stats in monsters.items()])
+if __name__ == "__main__":
+    collectionCharacters.insert_many([{"name": name, **stats} for name, stats in characters.items()])
+    collectionMonsters.insert_many([{"name": name, **stats} for name, stats in monsters.items()])
