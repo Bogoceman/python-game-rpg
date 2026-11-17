@@ -1,7 +1,7 @@
 import pymongo
 import sys
 from constants import INTRO_SCRIPT, GAME_CHOICE
-from variable import score, player_name, choice_user, top_5_score
+from variable import score, player_name, choice_user, top_5_score, choice_team
 from db_init import collectionPlayers, collectionCharacters
 
 
@@ -53,11 +53,19 @@ def quit_game() :
 
 # sélection les personnages a choisir 
 def team_selection() :
+    # création du dictionnaire de la team
+    team = {}
     # demander a l'utilisateur quel personnage il veut choisir (3 personnages)
     print("Choisissez vos compagnons")
-    for ally in collectionCharacters.find() :
-        print(f"{ally} {ally['name']} : Attaque {ally['ATK']} | Défense {ally['DEF']} | Point de Vie {ally['PV']}")
-    
+    for index, ally in enumerate(collectionCharacters.find(), start=1) :
+        print(f"{index} - {ally['name']} : Attaque {ally['ATK']} | Défense {ally['DEF']} | Point de Vie {ally['PV']}")
+    # tant que l'equipe n'a pas 3 joueurs
+    while team < 3 :
+        # ajouter le personnage a la team et incrémenter de 1 a chaques boucles
+        choice_team = int(input(f"Entrez le numéro du personnage ({len(team) + 1}/3) : "))
+        # ajouter le personnage a la team et le retirer du dictionnaire
+        team
     # enregistrer la sélection des personnages dans la base de données du joueur
     # enregistrer la team dans la bdd
+    
 team_selection()

@@ -1,5 +1,5 @@
 def main() :
-    fsgd
+    ...
     
 
 # faire les imports de fichiers
