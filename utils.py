@@ -1,6 +1,28 @@
-from constants import INTRO_SCRIPT
-from variable import score, player_name
-from db_init import collectionPlayers, db, client
+import sys
+from constants import INTRO_SCRIPT, GAME_CHOICE
+from variable import score, player_name, choice_user
+from db_init import collectionPlayers
+
+
+# selection de si on veut jouer, voir les scores, ou quitter le jeu
+def choice() :
+    # tant que infini
+    while True :
+        # affichage des options 
+        print(f"{GAME_CHOICE}")
+        # demander a l'utilisateur quel option il veut
+        choice_user = (input("Que choisissez vous ? "))
+        # faire un test du choix du l'utilisateur
+        if choice_user.isdigit():
+            choice_user = int(choice_user)
+            if 1 <= choice_user <= 3 :
+                return choice_user
+            else :
+                print("Rentrez 1, 2 ou 3 pour continuer")
+        # si test pas bon ça recommence
+        else :
+            print("Rentrez 1, 2 ou 3 pour continuer")
+    
 
 # introduction du jeu 
 def intro():
@@ -15,9 +37,20 @@ def intro():
     collectionPlayers.insert_one({"name": player_name, "score": [score],"characters": []})
     # retourner le pseudo 
     return player_name
-        
-    # sélection les personnages a choisir 
-        # demander a l'utilisateur quel personnage il veut choisir (3 personnages)
-        # enregistrer la sélection des personnages dans la base de données du joueur
 
-intro()
+
+# option pour afficher le leaderboard
+def leaderboard() :
+    
+
+# option pour quitter le jeu
+def quit_game() :
+    print(":'(")
+    sys.exit()
+    
+
+choice()            
+
+# sélection les personnages a choisir 
+    # demander a l'utilisateur quel personnage il veut choisir (3 personnages)
+    # enregistrer la sélection des personnages dans la base de données du joueur

@@ -1,1 +1,2 @@
 INTRO_SCRIPT = "Bienvenue dans Le Donjon Infernal. \nVous allez devoir vaincre des hordes d'ennemies à travers ce Donjon infinie"
+GAME_CHOICE = "Que voulez vous faire ? \n1.Jouer \n2.Voir les scores \n3.quitter le jeu"
