@@ -1,8 +1,10 @@
 import pymongo
 import sys
-from constants import INTRO_SCRIPT, GAME_CHOICE
-from variable import score, player_name, choice_user, top_5_score, choice_team
-from db_init import collectionPlayers, collectionCharacters
+from constants import INTRO_SCRIPT, GAME_CHOICE, CHARACTERS
+from variable import score, player_name, choice_user, top_5_score, choice_team, add_team, usefull_data
+from db_init import collectionPlayers, collectionCharacters, client
+# initialisation de la liste team
+team = []
 
 
 # selection de si on veut jouer, voir les scores, ou quitter le jeu
@@ -50,22 +52,33 @@ def leaderboard() :
 def quit_game() :
     print(":'(")
     sys.exit()
-
+    
 # sélection les personnages a choisir 
-def team_selection() :
-    # création du dictionnaire de la team
-    team = {}
-    # demander a l'utilisateur quel personnage il veut choisir (3 personnages)
+def team_selection():
+    # Récupérer les personnages depuis la base de données dans une liste
+    allies = list(collectionCharacters.find())
     print("Choisissez vos compagnons")
-    for index, ally in enumerate(collectionCharacters.find(), start=1) :
+    for index, ally in enumerate(allies, start=1):
         print(f"{index} - {ally['name']} : Attaque {ally['ATK']} | Défense {ally['DEF']} | Point de Vie {ally['PV']}")
-    # tant que l'equipe n'a pas 3 joueurs
-    while team < 3 :
-        # ajouter le personnage a la team et incrémenter de 1 a chaques boucles
-        choice_team = int(input(f"Entrez le numéro du personnage ({len(team) + 1}/3) : "))
-        # ajouter le personnage a la team et le retirer du dictionnaire
-        team
-    # enregistrer la sélection des personnages dans la base de données du joueur
-    # enregistrer la team dans la bdd
+    # Tant que l'équipe n'a pas 3 joueurs
+    while len(team) < 3:
+        usefull_data = input(f"Entrez le numéro du personnage ({len(team) + 1}/3) : ")
+        # Vérifier que la saisie est bien un chiffre entre 1 et le nombre de personnages
+        if not (usefull_data.isdigit() and 1 <= int(usefull_data) <= len(allies)):
+            print(f"Erreur : veuillez entrer un chiffre entre 1 et {len(allies)}.")
+            continue  # Recommence la boucle
+        choice_team = int(usefull_data)
+        choosen_champ = allies[choice_team - 1]
+        # Vérifier que le personnage n'est pas déjà dans l'équipe
+        if choosen_champ in team:
+            print("Vous avez déjà sélectionné ce personnage, choisissez-en un autre.")
+            continue
+        # Ajouter le personnage à la team
+        team.append(choosen_champ)
+        print(f"Vous avez sélectionné : {choosen_champ['name']}")
+
+    return team
+
     
 team_selection()
+print(team)
