@@ -27,3 +27,9 @@ MONSTERS = {
 	"Squelette": {"ATK": 15, "DEF": 7, "PV": 90, "DEAD": False},
     "Jeffrey Eipstein": {"ATK": 67, "DEF": 271, "PV": 666, "DEAD": False},
 }
+
+CHOIX_MENU = {
+    "Démarrer le jeu" : {"text" : "Démarrer le jeu"},
+    "Leaderboard" : {"text" : "Leaderboard"},
+    "Quiter le jeu" : {"text" : "Quiter le jeu"}
+}
