@@ -180,4 +180,3 @@ def stats_in_fight(hero_team, monstre) :
     
 if __name__ == "__main__":
     main()
-# FAIRE SYSTEME SCORE
