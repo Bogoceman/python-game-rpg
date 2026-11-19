@@ -14,19 +14,18 @@ CHARACTERS = {
 	"Chasseur": {"ATK": 16, "DEF": 11, "PV": 100, "DEAD": False},
 }
 
-MONSTERS = {
-	"Gobelin": {"ATK": 10, "DEF": 5, "PV": 50, "DEAD": False},
-	"Orc": {"ATK": 20, "DEF": 8, "PV": 120, "DEAD": False},
-	"Dragon": {"ATK": 35, "DEF": 20, "PV": 300, "DEAD": False},
-	"Zombie": {"ATK": 12, "DEF": 6, "PV": 70, "DEAD": False},
-	"Troll": {"ATK": 25, "DEF": 15, "PV": 200, "DEAD": False},
-	"Spectre": {"ATK": 18, "DEF": 10, "PV": 100, "DEAD": False},
-	"Golem": {"ATK": 30, "DEF": 25, "PV": 250, "DEAD": False},
-	"Vampire": {"ATK": 22, "DEF": 12, "PV": 150, "DEAD": False},
-	"Loup-garou": {"ATK": 28, "DEF": 18, "PV": 180, "DEAD": False},
-	"Squelette": {"ATK": 15, "DEF": 7, "PV": 90, "DEAD": False},
-    "Jeffrey Eipstein": {"ATK": 67, "DEF": 271, "PV": 666, "DEAD": False},
-}
+MONSTERS = [
+	{"NOM":"Gobelin" ,"ATK": 10, "DEF": 5, "PV": 50, "DEAD": False},
+	{"NOM":"Orc" ,"ATK": 20, "DEF": 8, "PV": 120, "DEAD": False},
+	{"NOM":"Dragon" ,"ATK": 35, "DEF": 20, "PV": 300, "DEAD": False},
+	{"NOM":"Zombie" ,"ATK": 12, "DEF": 6, "PV": 70, "DEAD": False},
+	{"NOM":"Troll" ,"ATK": 25, "DEF": 15, "PV": 200, "DEAD": False},
+	{"NOM":"Spectre" ,"ATK": 18, "DEF": 10, "PV": 100, "DEAD": False},
+	{"NOM":"Golem" ,"ATK": 30, "DEF": 25, "PV": 250, "DEAD": False},
+	{"NOM":"Vampire" ,"ATK": 22, "DEF": 12, "PV": 150, "DEAD": False},
+	{"NOM":"Loup-garou", "ATK": 28, "DEF": 18, "PV": 180, "DEAD": False},
+	{"NOM":"Squelette" ,"ATK": 15, "DEF": 7, "PV": 90, "DEAD": False},
+]
 
 CHOIX_MENU = {
     "Démarrer le jeu" : {"text" : "Démarrer le jeu"},

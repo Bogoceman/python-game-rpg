@@ -11,3 +11,7 @@ choice_menu = {}
 choice = {}
 team_choice = {}
 random_monster = 0
+hero_atk_damages = 0
+current_monster = {}
+hero_victim = {}
+
