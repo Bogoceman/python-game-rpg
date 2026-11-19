@@ -31,6 +31,7 @@ from db_init import collectionPlayers, collectionCharacters, client
 
 # option pour quitter le jeu
     # afficher message triste
+    # terminer le programme
     
 # sélection les personnages a choisir 
     # Récupérer les personnages depuis la base de données dans une liste
