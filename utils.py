@@ -36,7 +36,3 @@ def user_choice(number_choice, characters_dict):
         selected_choices[selected] = cloning(characters_dict[selected])
 
     return selected_choices
-
-# --- Utilisation ---
-#mon_equipe = user_choice(3, CHARACTERS)
-#print("Votre équipe :", mon_equipe)
