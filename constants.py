@@ -30,5 +30,5 @@ MONSTERS = [
 CHOIX_MENU = {
     "Démarrer le jeu" : {"text" : "Démarrer le jeu"},
     "Leaderboard" : {"text" : "Leaderboard"},
-    "Quiter le jeu" : {"text" : "Quiter le jeu"}
+    "Quitter" : {"text" : "Quitter"}
 }

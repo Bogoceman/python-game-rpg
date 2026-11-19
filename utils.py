@@ -10,7 +10,10 @@ def cloning(original_dict):
 # l'utilisateur rentre son choix et le bon (test)
 def check_user_choice(choosen_list):
     while True:
-        user_input_choice = input("Sélectionnez votre choix : ")
+        try:
+            user_input_choice = input("Sélectionnez votre choix : ")
+        except (KeyboardInterrupt, EOFError):
+            raise
         if user_input_choice.isdigit():
             index = int(user_input_choice) - 1
             if 0 <= index < len(choosen_list):

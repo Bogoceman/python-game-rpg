@@ -10,4 +10,7 @@ collectionPlayers = db["players"]
 
 if __name__ == "__main__":
     collectionCharacters.insert_many([{"name": name, **stats} for name, stats in CHARACTERS.items()])
-    collectionMonsters.insert_many([{"name": name, **stats} for name, stats in MONSTERS.items()])
+    collectionMonsters.insert_many([
+        {"name": monster["NOM"], **{key: value for key, value in monster.items() if key != "NOM"}}
+        for monster in MONSTERS
+    ])
