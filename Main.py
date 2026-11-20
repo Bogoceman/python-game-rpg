@@ -54,6 +54,11 @@ def print_options():
 def leaderboard() :
     # on prend le top 5 de la DB
     top_5_score = collectionPlayers.find().sort("score", pymongo.DESCENDING).limit(5)
+    # lancer affiche les 5 meilleurs joueurs
+    get_leaderboard(top_5_score)
+
+# affiche les 5 meilleurs joueurs    
+def get_leaderboard(top_5_score) :    
     # pour joueurs dans le top 5
     for players in top_5_score :
         # afficher le nom, le score, les personnages de son équipe
