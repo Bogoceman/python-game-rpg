@@ -65,8 +65,9 @@ def get_leaderboard(top_5_score) :
         score = players.get("score", 0)
         if isinstance(score, list):
             score = score[0] if score else 0
+        # on récupère l'équipe des meilleurs jouers 
         team = players.get("team", players.get("personnages", []))
-        # affichage des stats des joueurs 
+        # récupère des stats des joueurs et on les mets dans une liste selon les conditions 
         team_names = [character.get("name", str(character))
             if isinstance(character, dict)
             else str(character)
@@ -105,8 +106,6 @@ def da_game(team_choice) :
     
 # générer un monstre
 def monster_generator():
-    # indice du monstre = nb.random(0, len(collection)) ( il existe un fonction randmon choice)
-    # random_monster_index = random.choice(list(MONSTERS.values()))
     # monstre généré = monstre.copy(indice du monstre)
     current_monster = random.choice(MONSTERS)
     # retourner le monstre généré
@@ -121,7 +120,7 @@ def death_battle(team,monster) :
         # lancer affichage des stats
         stats_in_fight(team, monster)
         # pour les personnages dans l'équipe qui ont DEAD = False
-        for selected_hero, stats in team.items():
+        for _, stats in team.items():
             if not stats["DEAD"] :    
                 # lancer attaquer des heros
                 wave_score += heroes_attacking(stats, monster)
